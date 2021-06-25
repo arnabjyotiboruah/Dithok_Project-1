@@ -7,7 +7,7 @@ import com.dithok.myCommerce.model.UserModel;
 
 public interface GroupUserService {
 	public GroupUserModel addGroupUser(GroupUserModel groupUser);
-	public GroupUserModel findByUserId(long id);
+	public List<GroupUserModel> findByUserId(long id);
 	public List<GroupUserModel> findByGroupId(long id);
 	public String findUserByGroupId(long id);
 	public String findGroupByUserId(long id);

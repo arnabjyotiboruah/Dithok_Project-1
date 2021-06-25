@@ -24,7 +24,7 @@ public class GroupUserServiceImpl implements GroupUserService {
 	}
 
 	@Override
-	public GroupUserModel findByUserId(long id) {
+	public List<GroupUserModel> findByUserId(long id) {
 		return repo.findByUserId(id);
 	}
 

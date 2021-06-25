@@ -145,26 +145,31 @@ public class GroupController {
 	}
 	
 	
-	@RequestMapping(value="/group/applyPolicy", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-	public void applyPolicy() {
-
-		String email = session.getAttribute("loggedInUser").toString();
-		UserModel user = userService.findUserByEmail(email);
-		long userNewId = user.getId();
-		GroupUserModel groupUser = groupUserService.findByUserId(userNewId);
-		long groupId = groupUser.getGroup_id();
-		List<PoliciesModel> policy = policyService.getByGroupId(groupId);
-			for(int i=0; i<policy.size();i++) {
-				PoliciesModel eachPolicy = policy.get(i);
-				List<RulesModel> ruleList = ruleService.findByPolicyId(eachPolicy.getPolicy_id());
-					for(int j=0; j<ruleList.size();j++) {
-					RulesModel rule = ruleList.get(j);
-						if(rule.getType() == "Javascript") {
-							
-			}
-		System.out.println("Empty rule list");
-			}
-		}
+//	@RequestMapping(value="/group/applyPolicy", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+//	public void applyPolicy() {
+//
+//		String email = session.getAttribute("loggedInUser").toString();
+//		UserModel user = userService.findUserByEmail(email);
+//		long userNewId = user.getId();
+//		GroupUserModel groupUser = groupUserService.findByUserId(userNewId);
+//		long groupId = groupUser.getGroup_id();
+//		List<PoliciesModel> policy = policyService.getByGroupId(groupId);
+//			for(int i=0; i<policy.size();i++) {
+//				PoliciesModel eachPolicy = policy.get(i);
+//				List<RulesModel> ruleList = ruleService.findByPolicyId(eachPolicy.getPolicy_id());
+//					for(int j=0; j<ruleList.size();j++) {
+//					RulesModel rule = ruleList.get(j);
+//						if(rule.getType() == "Javascript") {
+//							
+//			}
+//		System.out.println("Empty rule list");
+//			}
+//		}
+//	}
+	
+	@RequestMapping(value="/group/viewUser/{id}", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+	public String viewUser(@PathVariable("id") long id){
+		return groupUserService.findUserByGroupId(id);
 	}
 	
 //	@RequestMapping(value="/group/cookie", method = RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)

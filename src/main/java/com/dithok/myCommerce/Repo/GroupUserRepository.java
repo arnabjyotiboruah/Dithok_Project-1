@@ -12,7 +12,7 @@ import com.dithok.myCommerce.model.GroupUserModel;
 public interface GroupUserRepository extends JpaRepository<GroupUserModel, Integer> {
 	
 	@Query(value="select s.* from group_user s where s.user_id = :userId", nativeQuery = true)
-    public GroupUserModel findByUserId(@Param("userId") long userId);
+    public List<GroupUserModel> findByUserId(@Param("userId") long userId);
 	
 	@Query(value="select s.* from group_user s where s.group_id = :groupId", nativeQuery = true)
     public List<GroupUserModel> findByGroupId(@Param("groupId") long groupId);
