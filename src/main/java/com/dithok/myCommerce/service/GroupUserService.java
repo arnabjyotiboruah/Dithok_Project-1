@@ -10,5 +10,6 @@ public interface GroupUserService {
 	public GroupUserModel findByUserId(long id);
 	public List<GroupUserModel> findByGroupId(long id);
 	public String findUserByGroupId(long id);
+	public String findGroupByUserId(long id);
 
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.dithok.myCommerce.Repo.GroupUserRepository;
 import com.dithok.myCommerce.model.GroupUserModel;
+import com.dithok.myCommerce.model.GroupsModel;
 import com.dithok.myCommerce.model.UserModel;
 import com.dithok.myCommerce.service.GroupUserService;
 
@@ -43,6 +44,19 @@ public class GroupUserServiceImpl implements GroupUserService {
 			listUser.trim();
 		}
 		return listUser;
+	}
+
+	@Override
+	public String findGroupByUserId(long id) {
+		List<GroupUserModel> listGroupUser = repo.findByUserId(id);
+		String listGroup = "";
+		for(int i = 0; i<listGroupUser.size();i++) {
+			GroupUserModel groupUser = listGroupUser.get(i);
+			GroupsModel group = groupUser.getGroup();
+			listGroup.concat(group.getName());
+			listGroup.trim();
+		}
+		return listGroup;
 	}
 
 }
