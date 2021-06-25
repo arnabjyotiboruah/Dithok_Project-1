@@ -38,7 +38,9 @@ public String start(){
 	else 
 	{
 		return "login";
-	}	
+	}
+//	return "redirect:/index";
+//	return "login";
 }
 
 @GetMapping("/alluserDetails")	
